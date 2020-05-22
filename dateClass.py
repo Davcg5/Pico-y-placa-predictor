@@ -1,8 +1,8 @@
 class Date():
     def __init__(self, date): 
-        self.date= date
+        self.__date= date
 
     def getDayName(self): 
         
-        return self.date.date().strftime("%A")
+        return self.__date.date().strftime("%A")
 

@@ -1,22 +1,19 @@
-RESTRICTIONSDICTIONARY={"Monday": ["1", "2"], 
-             "Tuesday": ["3", "4"],
-             "Wednesday": ["5", "6"],
-             "Thursday": ["7", "8"],
-             "Friday": ["9", "0"]}
+from constantsClass import Constants
+
 
 class Plate():
 
     def __init__(self, plate): 
-        self.plate= plate
-        self.lastDigit, =self.obtainLastDigit(self.plate)
+        self.__plate= plate
+        self.__lastDigit, =self.__obtainLastDigit(self.__plate)
         
 
     def getRestrictionDayName(self): 
-        for day, digits in RESTRICTIONSDICTIONARY.items(): 
-            if self.lastDigit in digits: 
+        for day, digits in Constants.RESTRICTIONSDICTIONARY.items(): 
+            if self.__lastDigit in digits: 
                  return day
 
-    def obtainLastDigit(self, plate): 
+    def __obtainLastDigit(self, plate): 
         if plate[-1].isnumeric(): 
             lastDigit=plate[-1]
             
