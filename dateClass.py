@@ -8,10 +8,8 @@ RESTRICTIONSDICTIONARY={"Monday": ["1", "2"],
 class Date():
 
     def __init__(self, date): 
-        self.date= self.stringToDatetime(date)
+        self.date= date
 
-    def stringToDatetime(self, timeInString):
-        return datetime.datetime.strptime(timeInString, '%d-%m-%Y')
 
     def getDay(self): 
         

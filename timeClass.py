@@ -18,7 +18,7 @@ class Time():
     def isOnRestriction(self): 
         for key, values in TIMEINTERVALS.items(): 
                 
-                if (self.stringToDatetime(values[0]) <self.stringToDatetime(self.time) < self.stringToDatetime(values[1])) :
+                if (self.stringToDatetime(values[0]) <self.time < self.stringToDatetime(values[1])) :
                     return True
                 else: 
                     return False 
