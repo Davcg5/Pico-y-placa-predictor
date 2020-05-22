@@ -2,18 +2,20 @@ from dateClass import Date
 from plateClass import Plate
 from timeClass import Time 
 import datetime
-import re
+from constantsClass import Constants
 from colorama import Back,  Fore, init, Style
 init()
 
-PLATEPATTERN = re.compile("^[A-Z]{3}[0-9]{3,4}|^[A-Z]{2}[0-9]{3}[A-Z]{1}")
 
 if __name__=="__main__": 
     print(Fore.BLUE+"Welcome, insert plate, time and date to consult if you are under restriction to circulate\n"+Style.RESET_ALL)
-
+    """
+    Receiving plate, input and date of user's vehicle
+    For all of them, checking whether the info is in the right format
+    """
     while True:   
         plateInput=input("Please, insert the plate number of your vehicle: ").upper()
-        if not PLATEPATTERN.match(plateInput):
+        if not Constants.PLATEPATTERN.match(plateInput):
             print("Sorry, the correct format is: AAA111 or AAA1111")
             continue
         else: 
@@ -46,7 +48,14 @@ if __name__=="__main__":
             time=Time(timeInput)
             break
         
+    """
+    Algorithm that determines if vehicle can be on the street or not 
 
+    Checks time first, if time is not under restriction the vehicle is free 
+    to go otherwise if the day of restriction of the plate is the same as 
+    the day of the date entered by user the vehicle can't be on the street,
+    otherwise the car is free to go 
+    """
 
     if (time.isOnRestriction()): 
         if(plate.getRestrictionDayName()==date.getDayName()):
