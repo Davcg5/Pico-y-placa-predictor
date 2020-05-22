@@ -8,21 +8,20 @@ class Plate():
 
     def __init__(self, plate): 
         self.plate= plate
-        self.lastDigit, self.typeOfCar=self.checkTypeOfCar(self.plate)
+        self.lastDigit, =self.obtainLastDigit(self.plate)
+        
 
-    def getRestrictionDay(self): 
-        for key, values in RESTRICTIONSDICTIONARY.items(): 
-            if self.lastDigit in values: 
-                 return key
+    def getRestrictionDayName(self): 
+        for day, digits in RESTRICTIONSDICTIONARY.items(): 
+            if self.lastDigit in digits: 
+                 return day
 
-    def checkTypeOfCar(self, plate): 
+    def obtainLastDigit(self, plate): 
         if plate[-1].isnumeric(): 
             lastDigit=plate[-1]
-            typeOfCar="Car"
+            
         else: 
             lastDigit=plate[-2]
-            typeOfCar="Motorcycle"
-        return lastDigit, typeOfCar
-    def getTypeOfCar(self): 
-        return self.typeOfCar
+            
+        return lastDigit
 

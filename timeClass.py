@@ -5,21 +5,20 @@ TIMEINTERVALS={
     "Afternoon": ["16:00", "19:30"]
 }
 
-
-
-
 class Time(): 
     def __init__(self, time): 
         self.time= time
-
-    def stringToDatetime(self, hourInString):
+    def convertToTime(self, hourInString):
         return datetime.datetime.strptime(hourInString, '%H:%M')
 
     def isOnRestriction(self): 
-        for key, values in TIMEINTERVALS.items(): 
-                
-                if (self.stringToDatetime(values[0]) <self.time < self.stringToDatetime(values[1])) :
-                    return True
+        #
+        restriction=False
+        for time in TIMEINTERVALS.values(): 
+                if (self.convertToTime(time[0]) <self.time < self.convertToTime(time[1])) :
+                    restriction= True
+                    break
                 else: 
-                    return False 
-   
+                    restriction= False 
+                    continue
+        return restriction
